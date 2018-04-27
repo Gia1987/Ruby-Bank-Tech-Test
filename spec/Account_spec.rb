@@ -4,7 +4,17 @@ describe Account do
 
   context'#Balance' do
     it' show the balance of account' do
+      #assert
       expect(subject.balance).to eq(0)
+    end
+  end
+
+  context'#deposit' do
+    it'user can deposit money' do
+      #arrange
+      subject.deposit(10)
+      #assert
+      expect(subject.balance).to eq(10) 
     end
   end
 
