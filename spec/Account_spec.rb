@@ -25,6 +25,13 @@ describe Account do
       #assert
       expect(subject.balance).to eq(0)
     end
+
+    it'user can not withdraw more money than own balance' do
+      #arrange
+      subject.deposit(10)
+      #assert
+      expect { subject.withdraw(11) }.to raise_error 'Sorry no enough money'
+    end
   end
 
 end

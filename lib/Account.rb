@@ -10,6 +10,10 @@ class Account
   end
 
   def withdraw(amount)
-    @balance -= amount
+    if @balance < amount
+      raise 'Sorry no enough money'
+    else
+      @balance -= amount
+    end
   end
 end
