@@ -14,7 +14,16 @@ describe Account do
       #arrange
       subject.deposit(10)
       #assert
-      expect(subject.balance).to eq(10) 
+      expect(subject.balance).to eq(10)
+    end
+  end
+  context'#withdraw' do
+    it'user can withdraw money' do
+      #arrange
+      subject.deposit(10)
+      subject.withdraw(10)
+      #assert
+      expect(subject.balance).to eq(0)
     end
   end
 
