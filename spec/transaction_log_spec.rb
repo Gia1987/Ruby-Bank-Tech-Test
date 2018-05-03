@@ -10,9 +10,9 @@ describe Transaction_log do
 
   context'#add' do
     it'Add the transaction to the history' do
-      subject.add(10,10)
-      subject.add(10,20)
-      expect(subject.history).to eq([[10,10],[10,20]])
+      subject.add('',10,10)
+      subject.add('',10,20)
+      expect(subject.history).to eq([['',10,10],['',10,20]])
     end
   end
 end

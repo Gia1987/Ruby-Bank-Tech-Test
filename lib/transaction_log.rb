@@ -6,7 +6,7 @@ class Transaction_log
     @history = []
   end
 
-  def add(amount, balance)
-    @history << [amount, balance]
+  def add(date, amount, balance)
+    @history << [date, amount, balance]
   end
 end
