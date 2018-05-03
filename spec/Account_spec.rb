@@ -1,36 +1,43 @@
-require 'Account'
+require'spec_helper'
+require'./lib/Account'
+
 describe Account do
-  subject(:Account) { Account.new }
+  subject(:account) { Account.new(transaction) }
+  let(:transaction) { double(:add, add: nil) }
+
 
   context'#Balance' do
     it' show the balance of account' do
       #assert
-      expect(subject.balance).to eq(0)
+      expect(account.balance).to eq(0)
     end
   end
 
   context'#deposit' do
     it'user can deposit money' do
       #arrange
-      subject.deposit(10)
+      expect(transaction).to receive(:add).with(10, 10)
+      account.deposit(10)
+
       #assert
-      expect(subject.balance).to eq(10)
-    end
+      expect(account.balance).to eq(10)
+      end
   end
   context'#withdraw' do
     it'user can withdraw money' do
       #arrange
-      subject.deposit(10)
-      subject.withdraw(10)
+      account.deposit(10)
+      expect(transaction).to receive(:add).with(-10, 0)
+      account.withdraw(10)
       #assert
-      expect(subject.balance).to eq(0)
+      expect(account.balance).to eq(0)
     end
 
     it'user can not withdraw more money than own balance' do
       #arrange
-      subject.deposit(10)
+      account.deposit(10)
       #assert
-      expect { subject.withdraw(11) }.to raise_error 'Sorry no enough money'
+      expect { account.withdraw(11) }.to raise_error 'Sorry no enough money'
     end
   end
 
